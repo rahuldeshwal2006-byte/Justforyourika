@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Special For You 💖</title>
+
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+
+
+body{
+height:100vh;
+overflow:hidden;
+font-family:Arial, sans-serif;
+background:linear-gradient(135deg,#ff758c,#667eea);
+color:white;
+}
+
+
+/* Pages */
+.page{
+position:absolute;
+width:100%;
+height:100%;
+display:flex;
+justify-content:center;
+align-items:center;
+flex-direction:column;
+transition:1s;
+}
+
+
+/* First Page */
+#page1{
+z-index:2;
+}
+
+
+.card{
+background:rgba(255,255,255,0.15);
+backdrop-filter:blur(20px);
+padding:50px;
+border-radius:35px;
+box-shadow:0 25px 70px rgba(0,0,0,0.5);
+text-align:center;
+width:90%;
+max-width:600px;
+}
+
+
+.card h1{
+font-size:30px;
+margin-bottom:20px;
+}
+
+
+.card p{
+font-size:20px;
+margin-bottom:30px;
+line-height:1.6;
+}
+
+
+button{
+padding:18px 45px;
+font-size:20px;
+border:none;
+border-radius:50px;
+background:white;
+color:#ff4d6d;
+cursor:pointer;
+transition:0.3s;
+box-shadow:0 0 25px rgba(255,255,255,0.8);
+}
+
+
+button:hover{
+transform:scale(1.1);
+}
+
+
+/* Second Page */
+#page2{
+background:linear-gradient(135deg,#667eea,#ff758c);
+transform:translateY(100%);
+}
+
+
+/* Big Code Box */
+.code-box{
+background:white;
+color:#ff4d6d;
+padding:60px;
+border-radius:50px;
+font-size:32px;
+font-weight:bold;
+letter-spacing:4px;
+box-shadow:0 40px 100px rgba(0,0,0,0.6);
+animation:pop 1s ease forwards;
+transform:scale(0);
+}
+
+
+@keyframes pop{
+to{transform:scale(1);}
+}
+
+
+/* Floating Hearts */
+.heart{
+position:absolute;
+font-size:30px;
+animation:float linear infinite;
+}
+
+
+@keyframes float{
+0%{transform:translateY(0) scale(1);}
+100%{transform:translateY(-1200px) scale(2);opacity:0;}
+}
+</style>
+</head>
+
+
+<body>
+
+
+<!-- PAGE 1 -->
+<div class="page" id="page1">
+<div class="card">
+<h1>For My Favorite Teammate 💖</h1>
+<p>
+Thank you for always helping me in Free Fire ✨<br>
+Tumhare bina matches itne fun nahi hote 😌<br>
+Ye chhota sa surprise sirf tumhare liye 💕
+</p>
+<button onclick="openPage2()">Open My Gift 💌</button>
+</div>
+</div>
+
+
+<!-- PAGE 2 -->
+<div class="page" id="page2">
+<div class="code-box">
+YOUR-REDEEM-CODE-HERE
+</div>
+</div>
+
+
+<!-- MUSIC -->
+<audio id="music" loop>
+<source src="myheaven.mp3" type="audio/mpeg">
+</audio>
+
+
+<script>
+
+
+/* Transition to Page 2 */
+function openPage2(){
+document.getElementById("page1").style.transform="translateY(-100%)";
+document.getElementById("page2").style.transform="translateY(0)";
+document.getElementById("music").play();
+startHearts();
+}
+
+
+/* Floating Hearts Animation */
+function startHearts(){
+setInterval(()=>{
+let heart=document.createElement("div");
+heart.className="heart";
+heart.innerHTML="💖";
+heart.style.left=Math.random()*100+"%";
+heart.style.bottom="-30px";
+heart.style.animationDuration=(4+Math.random()*4)+"s";
+document.body.appendChild(heart);
+setTimeout(()=>heart.remove(),8000);
+},300);
+}
+
+
+</script>
+
+
+</body>
+</html>
